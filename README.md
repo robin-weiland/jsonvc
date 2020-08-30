@@ -5,6 +5,8 @@ Tiny version control for json data
 ---
 
 [![Python version](https://img.shields.io/pypi/pyversions/jsonvc.svg)](https://img.shields.io/pypi/pyversions/jsonvc.svg)
+[![Build Status](https://travis-ci.org/robin-weiland/jsonvc.svg?branch=master)](https://travis-ci.org/robin-weiland/jsonvc)
+[![codecov](https://codecov.io/gh/robin-weiland/jsonvc/branch/master/graph/badge.svg)](https://codecov.io/gh/robin-weiland/jsonvc)
 [![PyPI version](https://badge.fury.io/py/pypipal.svg)](https://badge.fury.io/py/pypipal)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://choosealicense.com/licenses/mit/)
 [![Released with pypipal](https://img.shields.io/static/v1?label=released%20with&message=pypipal&color=informational)](https://test.pypi.org/project/pypipal/)
