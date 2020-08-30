@@ -19,7 +19,7 @@ Tiny version control for json data
 
 [Usage](#Usage)
 
-[Known Issues](#Known Issues)
+[Issues](#Issues)
 
 [License](#License)
 
@@ -55,7 +55,7 @@ repo.commit()
 
 **More will follow in the future**
 
-# Known Issues
+# Issues
 
 At moment, changes to stored objects within the json dictionary
 (e.g. `dict`, `list`) are not properly registered. 
