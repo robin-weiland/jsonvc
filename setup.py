@@ -38,7 +38,7 @@ if __name__ == '__main__':
         long_description=Path('README.md').read_text(),
         long_description_content_type='text/markdown',
         keywords=['json', 'vcs', 'git'],
-        python_requires='>=3.6',  # due to __class_getitem__  see PEP560
+        python_requires='>=3.5',  # typing
         classifiers=[
             'Development Status :: 4 - Beta',
 
