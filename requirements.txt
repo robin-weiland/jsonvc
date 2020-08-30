@@ -1,1 +1,4 @@
-# nothing for now
+# lines ending with ### will be ignored in setup.py since they are for testing etc
+
+coverage==5.2.1  ###
+pyfakefs==4.1.0  ###
