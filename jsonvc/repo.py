@@ -31,7 +31,6 @@ def auto_commit(method):
     """
     @wraps(method)
     def wrapper(self, *args, **kwargs):
-        print(method.__name__.replace('_', ''))
         data = method(self, *args, **kwargs)
         if JSONVC.AUTO_COMMIT:
             self.add()
@@ -176,7 +175,7 @@ class JSONVC(dict):
         """
         if index is not None: state = index
         elif timestamp is not None: state = index_from_timestamp(self.entries, timestamp)
-        else: state = len(self.entries)
+        else: raise ValueError('Either provide an index or a timestamp!')
 
         if not 0 <= state < len(self): raise IndexError(f'State {state} was out of range [0, {len(self)}]!')
 
@@ -185,18 +184,18 @@ class JSONVC(dict):
     @property
     def info(self) -> str:
         """Data about the repo"""
-        print('diff.changes', self.diff.changes, 'diff.deletions', self.diff.deletions)
         return f'jsonvc-repo[{len(self.entries)} entries, currently {len(self.diff)} changes]'
 
     @staticmethod
-    def init(path: Union[Path, str]) -> None:
+    def init(path: Union[Path, str], ignore_exist: bool = True) -> None:
         """
         Generate a new jsonvc repo.
 
         :param path: path to the jsonvc repo
+        :param ignore_exist: Overwrite existing file if set
         :return: Nothing
         """
-        dump(path, list())
+        dump(path, list(), ignore_exist)
 
     @staticmethod
     def verify(path: Optional[Union[Path, str]] = None,
@@ -218,7 +217,8 @@ class JSONVC(dict):
                         and isinstance(entry[0], int)
                         and isinstance(entry[1], dict)
                         and isinstance(entry[2], list),
-                        data))
+                        data)) \
+                and data == sorted(data)
         except Exception as exc: return False and exc  # pycharm doesn't like just Exception
 
     # dict methods to override
